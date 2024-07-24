@@ -11,7 +11,7 @@ public class AuthenticationService implements UserDetailsService {
 
     //Doing a dependency injection of Repository to access the DB
     @Autowired
-    private userRepository repository;
+    private UserRepository repository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

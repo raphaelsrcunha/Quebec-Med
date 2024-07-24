@@ -60,4 +60,12 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    public String getLogin() {
+        return this.login;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
 }

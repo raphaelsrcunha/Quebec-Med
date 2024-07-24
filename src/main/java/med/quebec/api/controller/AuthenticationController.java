@@ -2,6 +2,9 @@ package med.quebec.api.controller;
 
 import jakarta.validation.Valid;
 import med.quebec.api.domain.user.DataAuthentication;
+import med.quebec.api.domain.user.User;
+import med.quebec.api.infra.security.TokenJWTData;
+import med.quebec.api.infra.security.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +25,16 @@ public class AuthenticationController {
     @Autowired
     private AuthenticationManager manager;
 
+    @Autowired
+    private TokenService tokenService;
+
     @PostMapping
     public ResponseEntity login(@RequestBody @Valid DataAuthentication data) {
-        var token = new UsernamePasswordAuthenticationToken(data.login(), data.password());
-        var authentication = manager.authenticate(token);
+        var authenticationTokenoken = new UsernamePasswordAuthenticationToken(data.login(), data.password());
+        var authentication = manager.authenticate(authenticationTokenoken);
 
-        return ResponseEntity.ok("");
+        var tokenJWT = tokenService.generateToken((User) authentication.getPrincipal());
+        return ResponseEntity.ok(new TokenJWTData(tokenJWT));
     }
 
 }
