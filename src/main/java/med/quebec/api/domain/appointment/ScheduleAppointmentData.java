@@ -13,5 +13,5 @@ public record ScheduleAppointmentData (
 
         @NotNull
         @Future
-        LocalDateTime data) {
+        LocalDateTime apptDate) {
 }
