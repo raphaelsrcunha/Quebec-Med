@@ -32,10 +32,12 @@ public class Appointment {
 
     private LocalDateTime apptDate;
 
+
+    /*
     public Appointment(Long id, Doctor doctor, Patient patient, LocalDateTime apptDate) {
         this.id = id;
         this.doctor = doctor;
         this.patient = patient;
         this.apptDate = apptDate;
-    }
+    }*/
 }

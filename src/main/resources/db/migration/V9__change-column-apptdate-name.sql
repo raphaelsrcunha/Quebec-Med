@@ -1,0 +1,1 @@
+ALTER TABLE appointments RENAME COLUMN apptDate TO appt_date;
