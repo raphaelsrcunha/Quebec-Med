@@ -1,4 +1,4 @@
-create table users(
+create table appointments(
 
     id bigint not null auto_increment,
     doctor_id bigint not null,

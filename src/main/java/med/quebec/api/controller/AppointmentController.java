@@ -2,7 +2,7 @@ package med.quebec.api.controller;
 
 import jakarta.validation.Valid;
 import med.quebec.api.domain.appointment.ScheduleAppointmentData;
-import med.quebec.api.domain.appointment.detailingAppointmentData;
+import med.quebec.api.domain.appointment.DetailingAppointmentData;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,8 +17,7 @@ public class AppointmentController {
     @PostMapping
     @Transactional
     public ResponseEntity postAppointment(@RequestBody @Valid ScheduleAppointmentData data){
-        System.out.println(data);
-        return ResponseEntity.ok(new detailingAppointmentData(null, null, null, null));
+        return ResponseEntity.ok(new DetailingAppointmentData(null, null, null, null));
     }
 
 }

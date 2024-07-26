@@ -9,7 +9,7 @@ public record ScheduleAppointmentData (
         Long doctorId,
 
         @NotNull
-        Long PatientId,
+        Long patientId,
 
         @NotNull
         @Future

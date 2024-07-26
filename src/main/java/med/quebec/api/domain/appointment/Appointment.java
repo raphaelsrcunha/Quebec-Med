@@ -10,6 +10,8 @@ import med.quebec.api.domain.patient.Patient;
 
 import java.time.LocalDateTime;
 
+@Table(name="appointments")
+@Entity(name="Appointment")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
