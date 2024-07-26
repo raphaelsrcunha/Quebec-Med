@@ -23,7 +23,7 @@ public class Appointment {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "doctor_id") //need to check
+    @JoinColumn(name = "doctor_id")
     private Doctor doctor;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -32,4 +32,10 @@ public class Appointment {
 
     private LocalDateTime apptDate;
 
+    public Appointment(Long id, Doctor doctor, Patient patient, LocalDateTime apptDate) {
+        this.id = id;
+        this.doctor = doctor;
+        this.patient = patient;
+        this.apptDate = apptDate;
+    }
 }
