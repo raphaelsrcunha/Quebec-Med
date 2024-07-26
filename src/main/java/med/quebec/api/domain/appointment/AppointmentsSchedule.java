@@ -30,7 +30,7 @@ public class AppointmentsSchedule {
 
         var patient = patientRepository.getReferenceById(data.patientId());
         var doctor = chooseDoctor(data);
-        var appointment = new Appointment(null, doctor, patient, data.apptDate());
+        var appointment = new Appointment(null, doctor, patient, data.apptDate(), null);
 
         appointmentRepository.save(appointment);
 
@@ -50,4 +50,14 @@ public class AppointmentsSchedule {
 
     }
 
+    public void cancel(CancelingAppointmentData data) {
+
+        if (!appointmentRepository.existsById(data.appointmentId())) {
+            throw new ExceptionValidation("An appointment with this id doesn't exist!");
+        }
+
+        var appointment = appointmentRepository.getReferenceById(data.appointmentId());
+        appointment.cancel(data.cancellationReason());
+
+    }
 }
