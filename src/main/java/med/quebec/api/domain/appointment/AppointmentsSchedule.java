@@ -1,12 +1,15 @@
 package med.quebec.api.domain.appointment;
 
 import med.quebec.api.domain.ExceptionValidation;
+import med.quebec.api.domain.appointment.validations.AppointmentScheduleValidator;
 import med.quebec.api.domain.doctor.Doctor;
 import med.quebec.api.domain.doctor.DoctorRepository;
 import med.quebec.api.domain.doctor.MedicalSpecialty;
 import med.quebec.api.domain.patient.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class AppointmentsSchedule {
@@ -18,6 +21,9 @@ public class AppointmentsSchedule {
     @Autowired
     private PatientRepository patientRepository;
 
+    @Autowired
+    private List<AppointmentScheduleValidator> validators;
+
     public void schedule(ScheduleAppointmentData data){
 
         if(!patientRepository.existsById(data.patientId())) {
@@ -27,6 +33,8 @@ public class AppointmentsSchedule {
         if(data.doctorId() != null && !doctorRepository.existsById(data.doctorId())) {
             throw new ExceptionValidation("Doctor id doesn't exist!");
         }
+
+        validators.forEach(v -> v.validate(data));
 
         var patient = patientRepository.getReferenceById(data.patientId());
         var doctor = chooseDoctor(data);

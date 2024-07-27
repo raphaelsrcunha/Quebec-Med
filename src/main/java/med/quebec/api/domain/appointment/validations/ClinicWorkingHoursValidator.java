@@ -2,10 +2,12 @@ package med.quebec.api.domain.appointment.validations;
 
 import jakarta.validation.ValidationException;
 import med.quebec.api.domain.appointment.ScheduleAppointmentData;
+import org.springframework.stereotype.Component;
 
 import java.time.DayOfWeek;
 
-public class ClinicWorkingHours {
+@Component
+public class ClinicWorkingHoursValidator implements AppointmentScheduleValidator {
 
     public void validate(ScheduleAppointmentData data) {
         var apptDate = data.apptDate();
