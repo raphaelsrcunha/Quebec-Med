@@ -7,7 +7,7 @@
 <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=flat-square&logo=Spring&logoColor=white">
 
 ## Trello Board
-<a href="https://trello.com/b/WuQm5FxI/api-quebec-med"><img src="https://shields.io/badge/Trello-blue?logo=Trello&style=flat"></a>
+<a href="https://trello.com/b/WuQm5FxI/api-quebec-med" target="_blank"><img src="https://shields.io/badge/Trello-blue?logo=Trello&style=flat"></a>
 
 ## Documentation using SpringDoc
 /v3/api-docs
