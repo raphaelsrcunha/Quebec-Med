@@ -1,5 +1,6 @@
 package med.quebec.api.controller;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import med.quebec.api.domain.appointment.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ public class AppointmentController {
 
     @PostMapping
     @Transactional
+    @SecurityRequirement(name = "bearer-key")
     public ResponseEntity postAppointment(@RequestBody @Valid ScheduleAppointmentData data){
 
         var dto = schedule.schedule(data);
