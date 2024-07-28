@@ -24,7 +24,7 @@ public class AppointmentsSchedule {
     @Autowired
     private List<AppointmentScheduleValidator> validators;
 
-    public void schedule(ScheduleAppointmentData data){
+    public DetailingAppointmentData schedule(ScheduleAppointmentData data){
 
         if(!patientRepository.existsById(data.patientId())) {
             throw new ExceptionValidation("Patient id doesn't exist!");
@@ -38,9 +38,16 @@ public class AppointmentsSchedule {
 
         var patient = patientRepository.getReferenceById(data.patientId());
         var doctor = chooseDoctor(data);
+
+        if (doctor == null) {
+            throw new ExceptionValidation("There is no doctor available for the chosen time slot");
+        }
+
         var appointment = new Appointment(null, doctor, patient, data.apptDate(), null);
 
         appointmentRepository.save(appointment);
+
+        return new DetailingAppointmentData(appointment);
 
     }
 

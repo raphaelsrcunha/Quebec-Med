@@ -1,6 +1,7 @@
 package med.quebec.api.domain.appointment.validations;
 
 import jakarta.validation.ValidationException;
+import med.quebec.api.domain.ExceptionValidation;
 import med.quebec.api.domain.appointment.ScheduleAppointmentData;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +17,7 @@ public class AppointmentInAdvanceValidator implements AppointmentScheduleValidat
         var diffInMinutes = Duration.between(now, appointmentDate).toMinutes();
 
         if(diffInMinutes < 30) {
-            throw new ValidationException("Appointments must be scheduled more than 30 minutes in advance");
+            throw new ExceptionValidation("Appointments must be scheduled more than 30 minutes in advance");
         }
     }
 

@@ -1,6 +1,8 @@
 package med.quebec.api.infra.exception;
 
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.ValidationException;
+import med.quebec.api.domain.ExceptionValidation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -26,6 +28,11 @@ public class ExHandler {
 
     }
 
+    @ExceptionHandler(ExceptionValidation.class)
+    public ResponseEntity handleBusinessRuleErrors(ExceptionValidation ex) {
+        return ResponseEntity.badRequest().body(ex.getMessage());
+    }
+
     private record errorValidationData(String field, String message) {
 
         private errorValidationData(FieldError error){
@@ -33,5 +40,7 @@ public class ExHandler {
         }
 
     }
+
+
 
 }

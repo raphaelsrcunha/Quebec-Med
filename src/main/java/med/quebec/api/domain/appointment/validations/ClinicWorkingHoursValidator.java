@@ -1,6 +1,7 @@
 package med.quebec.api.domain.appointment.validations;
 
 import jakarta.validation.ValidationException;
+import med.quebec.api.domain.ExceptionValidation;
 import med.quebec.api.domain.appointment.ScheduleAppointmentData;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +17,7 @@ public class ClinicWorkingHoursValidator implements AppointmentScheduleValidator
         var afterClosing = apptDate.getHour() > 18;
 
         if (sunday || beforeOpening || afterClosing) {
-            throw new ValidationException("Appointment out of working hours");
+            throw new ExceptionValidation("Appointment out of working hours");
         }
     }
 

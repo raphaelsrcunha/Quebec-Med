@@ -1,6 +1,7 @@
 package med.quebec.api.domain.appointment.validations;
 
 import jakarta.validation.ValidationException;
+import med.quebec.api.domain.ExceptionValidation;
 import med.quebec.api.domain.appointment.ScheduleAppointmentData;
 import med.quebec.api.domain.patient.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class PatientActiveValidator implements AppointmentScheduleValidator {
         var isPatientActive = patientRepository.isActiveById(data.patientId());
 
         if(!isPatientActive) {
-            throw new ValidationException("Patient must be active to schedule an appointment");
+            throw new ExceptionValidation("Patient must be an active patient in our clinic's systems to schedule an appointment");
         }
 
     }
