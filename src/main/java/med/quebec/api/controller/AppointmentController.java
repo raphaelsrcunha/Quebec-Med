@@ -19,9 +19,7 @@ public class AppointmentController {
     @Transactional
     @SecurityRequirement(name = "bearer-key")
     public ResponseEntity postAppointment(@RequestBody @Valid ScheduleAppointmentData data){
-
         var dto = schedule.schedule(data);
-
         return ResponseEntity.ok(dto);
     }
 

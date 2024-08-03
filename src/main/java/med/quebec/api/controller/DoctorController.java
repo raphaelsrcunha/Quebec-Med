@@ -25,9 +25,7 @@ public class DoctorController {
     public ResponseEntity postDoctor(@RequestBody @Valid MedicalRegistrationData data, UriComponentsBuilder uriBuilder){
         var doctor = new Doctor(data);
         repository.save(doctor);
-
         var uri = uriBuilder.path("/doctors/{id}").buildAndExpand(doctor.getId()).toUri();
-
         return ResponseEntity.created(uri).body(new MedicalDetailData(doctor));
     }
 
@@ -57,7 +55,6 @@ public class DoctorController {
         //repository.deleteById(id); we changed to logical delete using column active
         var doctor = repository.getReferenceById(id);
         doctor.inactivate();
-
         return ResponseEntity.noContent().build();
     }
 

@@ -36,7 +36,7 @@ public class Appointment {
     private CancellationReason cancellationReason;
 
     /*
-    public Appointment(Long id, Doctor doctor, Patient patient, LocalDateTime apptDate, CancellationReason cancellationReason) {
+    public Appointment(Long id, Doctor doctor, Patient patient, LocalDateTime apptDate) {
         this.id = id;
         this.doctor = doctor;
         this.patient = patient;

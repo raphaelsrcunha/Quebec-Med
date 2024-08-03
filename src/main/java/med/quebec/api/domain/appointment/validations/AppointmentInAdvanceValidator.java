@@ -18,6 +18,7 @@ public class AppointmentInAdvanceValidator implements AppointmentScheduleValidat
 
         if(diffInMinutes < 30) {
             throw new ExceptionValidation("Appointments must be scheduled more than 30 minutes in advance");
+
         }
     }
 
