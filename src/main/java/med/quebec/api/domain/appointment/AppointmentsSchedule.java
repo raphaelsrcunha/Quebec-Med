@@ -4,7 +4,6 @@ import med.quebec.api.domain.ExceptionValidation;
 import med.quebec.api.domain.appointment.validations.AppointmentScheduleValidator;
 import med.quebec.api.domain.doctor.Doctor;
 import med.quebec.api.domain.doctor.DoctorRepository;
-import med.quebec.api.domain.doctor.MedicalSpecialty;
 import med.quebec.api.domain.patient.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

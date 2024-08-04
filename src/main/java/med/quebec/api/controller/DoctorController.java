@@ -52,7 +52,6 @@ public class DoctorController {
     @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity deleteDoctor(@PathVariable Long id) {
-        //repository.deleteById(id); we changed to logical delete using column active
         var doctor = repository.getReferenceById(id);
         doctor.inactivate();
         return ResponseEntity.noContent().build();

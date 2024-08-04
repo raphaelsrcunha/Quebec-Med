@@ -35,15 +35,6 @@ public class Appointment {
     @Column(name="cancellation_reason")
     private CancellationReason cancellationReason;
 
-    /*
-    public Appointment(Long id, Doctor doctor, Patient patient, LocalDateTime apptDate) {
-        this.id = id;
-        this.doctor = doctor;
-        this.patient = patient;
-        this.apptDate = apptDate;
-        this.cancellationReason = cancellationReason;
-    }*/
-
     public void cancel(CancellationReason cancellationReason) {
         this.cancellationReason = cancellationReason;
     }
