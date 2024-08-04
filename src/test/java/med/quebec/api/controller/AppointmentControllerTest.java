@@ -46,7 +46,7 @@ class AppointmentControllerTest {
     @DisplayName("Should return HTTP code 400 when information is invalid")
     @WithMockUser
     void postAppointment_scenario1() throws Exception {
-        var response = mvc.perform(post("/appointment"))
+        var response = mvc.perform(post("/appointments"))
                 .andReturn().getResponse();
 
         assertThat(response.getStatus()).isEqualTo(HttpStatus.BAD_REQUEST.value());
@@ -66,7 +66,7 @@ class AppointmentControllerTest {
 
         var response = mvc
                 .perform(
-                        post("/appointment")
+                        post("/appointments")
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(scheduleAppointmentDataJson.write(
                                         new ScheduleAppointmentData(1l, specialty, 2l, date)

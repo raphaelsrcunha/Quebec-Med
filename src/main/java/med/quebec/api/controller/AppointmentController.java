@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("appointment")
+@RequestMapping("appointments")
 public class AppointmentController {
 
     @Autowired
